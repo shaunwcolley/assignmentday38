@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Add Post</title>
+  </head>
+  <body>
+    <div>
+      {{>menu}}
+      <div>
+        <div>
+          <h3>Create New Post Below</h3>
+        </div>
+        <form action="/add-post" method="POST">
+          <div>
+            <input type="text" name="title" placeholder="Best Post Ever"/>
+          </div>
+          <div>
+            <textarea name="body"></textarea>
+          </div>
+          <div>
+            <select name="category">
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Android">Android</option>
+              <option value="iOS">iOS</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <button type="submit">Post</button>
+        </form>
+      </div>
+    </div>
+  </body>

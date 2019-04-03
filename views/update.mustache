@@ -1,0 +1,35 @@
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Edit Post</title>
+  </head>
+  <body>
+    <div>
+      {{>menu}}
+      <div>
+        <div>
+          <h3>Edit Post Below</h3>
+        </div>
+        <form action="/edit-post" method="POST">
+          <div>
+            <input type="hidden" name="id" value="{{post.id}}"></input>
+            <input type="text" name="title" value="{{post.title}}"></input>
+          </div>
+          <div>
+            <textarea name="body">{{post.body}}</textarea>
+          </div>
+          <div>
+            <select name="category">
+              <option value="{{post.category}}">{{post.category}}</option>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Android">Android</option>
+              <option value="iOS">iOS</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>

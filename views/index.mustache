@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>All Posts</title>
+  </head>
+  <body>
+    <div>
+      {{>menu}}
+      <div>
+        <h3>All Posts:</h3>
+        <form action="/filter-by-category" method="POST">
+          <span>Filter:</span>
+          <select onchange="this.form.submit()" name="category">
+            <option disabled="disabled" selected="selected">Category</option>
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Android">Android</option>
+            <option value="iOS">iOS</option>
+            <option value="Other">Other</option>
+          </select>
+        </form>
+      </div>
+      <ul>
+        {{#posts}}
+        <li>
+          <h4>{{title}} - {{category}}</h4>
+          <p>{{body}}</p>
+          <span>{{updatedAt}}</span>
+          <div>
+            <form action="/delete-post" method="POST">
+              <input type="hidden" name="postID" value="{{id}}"/>
+              <button type="submit">Delete Post</button>
+            </form>
+            <a href="/update-post/id/{{id}}"><button>Edit Post</button></a>
+          </div>
+          <div>
+          </div>
+        </li>
+        {{/posts}}
+      </ul>
+    </div>
+  </body>
+</html>
