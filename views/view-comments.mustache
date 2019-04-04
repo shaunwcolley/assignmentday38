@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Comment Page</title>
+  </head>
+  <body>
+    {{>menu}}
+    <div>
+      <h4>{{post.title}} - {{post.category}}</h4>
+      <p>{{post.body}}</p>
+      <span>{{post.updatedAt}}</span>
+    </div>
+    <div>
+      <div>
+        <h3>Comment Below</h3>
+      </div>
+      <form action="/add-comment" method="POST">
+        <div>
+          <input type="hidden" name="postId" value="{{post.id}}">
+          <input type="text" name="title" placeholder="Author made following points ..."/>
+        </div>
+        <div>
+          <textarea name="body"></textarea>
+        </div>
+        <button type="submit">Add Comment</button>
+      </form>
+      <div>
+        <h4>Comments:</h4>
+      </div>
+      <ul>
+        {{#post.comments}}
+        <li>
+          <h4>{{title}}</h4>
+          <p>{{body}}</p>
+          <form action="/delete-comment" method="post">
+            <input type="hidden" name="postId" value="{{postId}}"/>
+            <input type="hidden" name="commentId" value="{{id}}"/>
+            <button type="submit">Delete Comment</button>
+          </form>
+          <a href="/edit-comment/commentid/{{id}}">Edit</a>
+        </li>
+        {{/post.comments}}
+      </ul>
+    </div>
+  </body>
+</html>

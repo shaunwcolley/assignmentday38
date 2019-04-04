@@ -1,0 +1,26 @@
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Edit comment</title>
+  </head>
+  <body>
+    <div>
+      {{>menu}}
+      <div>
+        <div>
+          <h3>Edit Post Below</h3>
+        </div>
+        <form action="/edit-comment" method="POST">
+          <div>
+            <input type="hidden" name="commentId" value="{{comment.id}}"></input>
+            <input type="hidden" name="postId" value="{{comment.postId}}"></input>
+            <input type="text" name="title" value="{{comment.title}}"></input>
+          </div>
+          <div>
+            <textarea name="body">{{comment.body}}</textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
